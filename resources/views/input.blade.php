@@ -6,7 +6,7 @@
     <input type="text" name="code_giris" class="form-control" placeholder="Güvenlik Kodu" aria-label="Username"
         aria-describedby="basic-addon1">
 
-    @error('code_giris')
+    @error($type)
         <div style="color: red;">{{ $message }}</div>
     @enderror
 </div>
