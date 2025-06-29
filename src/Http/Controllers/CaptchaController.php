@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 
 class CaptchaController extends Controller
 {
-    public function generate()
+    public function generate($refresh = "", $type = null)
     {
         $im = imagecreatetruecolor(100, 35);
         $white = imagecolorallocate($im, 255, 255, 255);
@@ -15,7 +15,11 @@ class CaptchaController extends Controller
 
         $captcha_code = Str::upper(Str::random(4));
 
-        session(['captcha_code' => $captcha_code]);
+        if ($type) {
+            session([$type => $captcha_code]);
+        } else {
+            session(["captcha_code" => $captcha_code]);
+        }
 
         imagefilledrectangle($im, 0, 0, 100, 35, $black);
 
@@ -32,6 +36,12 @@ class CaptchaController extends Controller
         $imageData = ob_get_clean();
         imagedestroy($im);
 
-        return response($imageData)->header('Content-Type', 'image/png');
+        if ($refresh == 0) {
+            return response($imageData)->header('Content-Type', 'image/png');
+        } else {
+            return response("data:image/png;base64," . base64_encode($imageData));
+        }
+
     }
+
 }
