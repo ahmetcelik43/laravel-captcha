@@ -3,7 +3,7 @@
         <button onclick="refresh(this)">Yenile</button>
         <img src="{{ route('captcha.generate', ['refresh' => 0, 'type' => $type]) }}" alt="Captcha">
     </span>
-    <input type="text" name="code_giris" class="form-control" placeholder="Güvenlik Kodu" aria-label="Username"
+    <input type="text" name="{{$type}}" class="form-control" placeholder="Güvenlik Kodu" aria-label="Username"
         aria-describedby="basic-addon1">
 
     @error($type)
