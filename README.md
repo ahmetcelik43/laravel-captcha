@@ -1,3 +1,4 @@
+LARAVEL CAPTCHA:
 KULLANIMI:
 VİEWSDE:
 @include('captcha::input',["type"=>"code"])
