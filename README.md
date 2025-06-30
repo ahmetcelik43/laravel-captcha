@@ -1,4 +1,6 @@
 LARAVEL CAPTCHA:
+KURULUM:
+composer require ahmetcelik43/laravel-captcha
 KULLANIMI:
 VİEWSDE:
 @include('captcha::input',["type"=>"code"])
